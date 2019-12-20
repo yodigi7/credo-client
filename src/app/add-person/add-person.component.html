@@ -1,6 +1,6 @@
 <div>
     <h1>Add Person</h1>
-    <form #addPerson="ngForm">
+    <form (ngSubmit)="onSubmit()" #addPerson="ngForm">
         <div style="grid-template-columns: 1fr 1fr 1fr;display: grid;">
             <div class="form-group">
                 <label for="firstName">First Name</label>
@@ -51,7 +51,7 @@
                 <input type="text" class="form-control" id="phoneType" [(ngModel)]="phoneModel.type" name="phoneType">
             </div>
         </div>
-        <button (click)="addPhone()">Add +</button>
+        <button type="button" (click)="addPhone()">Add +</button>
         <div *ngIf="model.emails.length">
             <h3>Emails</h3>
             <div *ngFor="let email of model.emails">
@@ -69,7 +69,7 @@
                 <input type="text" class="form-control" id="emailType" [(ngModel)]="emailModel.type" name="emailType">
             </div>
         </div>
-        <button (click)="addEmail()">Add +</button>
+        <button type="button" (click)="addEmail()">Add +</button>
         <div class="form-group">
             <label for="membership">Membership Level</label>
             <select class="form-control" id="membership" [(ngModel)]="model.membershipLevel" name="membership">
@@ -99,6 +99,6 @@
             <label for=""></label>
             <input type="text" class="form-control" id="" [(ngModel)]="" name="">
         </div> -->
-        <input type="submit" (click)="onSubmit()">
+        <input type="submit">
     </form>
 </div>

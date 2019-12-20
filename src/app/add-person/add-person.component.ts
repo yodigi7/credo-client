@@ -18,13 +18,13 @@ export class AddPersonComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit() {
-    window.alert("Person would be added to the DB when connected");
+    window.alert('Person would be added to the DB when connected');
     this.submitted = true;
     this.resetPage();
   }
 
   removePhone(phone: Phone) {
-    this.model.phones.splice(this.model.phones.indexOf(phone), 1)
+    this.model.phones.splice(this.model.phones.indexOf(phone), 1);
   }
 
   addPhone() {
