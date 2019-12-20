@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonComponent, Phone, Email } from '../person/person.component';
-import { PathLocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-add-person',
