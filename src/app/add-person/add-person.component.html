@@ -1,7 +1,7 @@
 <div>
     <h1>Add Person</h1>
     <form (ngSubmit)="onSubmit()">
-        <div class="threeWide">
+        <div class="nameFormat">
             <mat-form-field>
                 <!-- Anthony, finish up. [(ngModel)]-->
                 <mat-label>Prefix</mat-label>
@@ -11,7 +11,7 @@
                     <mat-option value=Mrs.>Mrs.</mat-option>
                     <mat-option value=Ms.>Ms.</mat-option>
                 </mat-select>
-            </mat-form-field>            
+            </mat-form-field>
             <mat-form-field>
                 <input matInput type="text" placeholder="First Name" [(ngModel)]="model.firstName" name="firstName">
             </mat-form-field>
@@ -36,7 +36,7 @@
                     <mat-option value=III>III</mat-option>
                     <mat-option value=IV>IV</mat-option>
                 </mat-select>
-            </mat-form-field> 
+            </mat-form-field>
         </div>
         <mat-form-field>
             <input matInput type="text" placeholder="Street" type="text" [(ngModel)]="model.street" name="street">
