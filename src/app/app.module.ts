@@ -9,6 +9,7 @@ import { PersonComponent } from './person/person.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {MatSelectModule} from '@angular/material/select';
     PersonComponent
   ],
   imports: [
+    MatButtonModule,
     MatSelectModule,
     MatInputModule,
     BrowserModule,

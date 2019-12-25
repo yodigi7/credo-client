@@ -29,7 +29,7 @@
             <div *ngFor="let phone of model.phones">
                 Phone Number: {{phone.phoneNumber}}
                 Type: {{phone.type}}
-                <button (click)="removePhone(phone)">Remove</button>
+                <button mat-mat-raised-button (click)="removePhone(phone)">Remove</button>
             </div>
         </div>
         <div style="grid-template-columns: 1fr 1fr;display: grid;">
@@ -41,7 +41,7 @@
                 <input matInput type="text" placeholder="Phone Type" [(ngModel)]="phoneModel.type" name="phoneType">
             </mat-form-field>
         </div>
-        <button type="button" (click)="addPhone()">Add +</button>
+        <button mat-raised-button type="button" (click)="addPhone()">Add +</button>
         <div *ngIf="model.emails.length">
             <h3>Emails</h3>
             <div *ngFor="let email of model.emails">
@@ -57,16 +57,16 @@
                 <input matInput type="text" placeholder="Email Type" [(ngModel)]="emailModel.type" name="emailType">
             </mat-form-field>
         </div>
-        <button type="button" (click)="addEmail()">Add +</button>
+        <button mat-raised-button type="button" (click)="addEmail()">Add +</button>
             <mat-form-field>
                 <mat-label>Membership Level</mat-label>
                 <mat-select [(ngModel)]="model.membershipLevel" name="membership">
-                    <mat-option>None</mat-option>
-                    <mat-option>Green</mat-option>
-                    <mat-option>Silver</mat-option>
-                    <mat-option>Gold</mat-option>
+                    <mat-option value=None>None</mat-option>
+                    <mat-option value=Green>Green</mat-option>
+                    <mat-option value=Silver>Silver</mat-option>
+                    <mat-option value=Gold>Gold</mat-option>
                 </mat-select>
             </mat-form-field>
-        <input type="submit">
+        <button mat-raised-button type="submit">Submit</button>
     </form>
 </div>
