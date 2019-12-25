@@ -1,7 +1,7 @@
 <div>
     <h1>Add Person</h1>
     <form (ngSubmit)="onSubmit()">
-        <div style="grid-template-columns: 1fr 1fr 1fr; display: grid;">
+        <div class="threeWide">
             <mat-form-field>
                 <input matInput type="text" placeholder="First Name" [(ngModel)]="model.firstName" name="firstName">
             </mat-form-field>
@@ -32,7 +32,7 @@
                 <button mat-mat-raised-button (click)="removePhone(phone)">Remove</button>
             </div>
         </div>
-        <div style="grid-template-columns: 1fr 1fr;display: grid;">
+        <div class="twoWide">
             <mat-form-field>
                 <input matInput type="text" placeholder="Phone Number" [(ngModel)]="phoneModel.phoneNumber"
                     name="phoneNumber">
@@ -49,7 +49,7 @@
                 Type: {{email.type}}
             </div>
         </div>
-        <div style="grid-template-columns: 1fr 1fr;display: grid;">
+        <div class="twoWide">
             <mat-form-field>
                 <input matInput type="text" placeholder="Email" [(ngModel)]="emailModel.email" name="email">
             </mat-form-field>
