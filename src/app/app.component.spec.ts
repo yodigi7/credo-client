@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  xit(`should have as title 'legion-of-mary-client'`, () => {
+  xit(`should have as title 'credo-client'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('legion-of-mary-client');
+    expect(app.title).toEqual('credo-client');
   });
 
   xit('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('legion-of-mary-client app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('credo-client app is running!');
   });
 });

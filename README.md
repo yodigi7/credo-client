@@ -1,5 +1,5 @@
-[![Actions Status](https://github.com/yodigi7/legion-of-mary-client/workflows/Node%20CI/badge.svg)](https://github.com/yodigi7/legion-of-mary-client/actions)
-# LegionOfMaryClient
+[![Actions Status](https://github.com/yodigi7/credo-client/workflows/Node%20CI/badge.svg)](https://github.com/yodigi7/credo-client/actions)
+# CredoClient
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
