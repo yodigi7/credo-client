@@ -14,6 +14,6 @@ export class LoginComponent implements OnInit {
   }
 
   authenticate() {
-    this.router.navigateByUrl("/add-person")
+    this.router.navigateByUrl('/add-person');
   }
 }
