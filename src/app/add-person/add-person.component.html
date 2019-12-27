@@ -3,9 +3,8 @@
   <form (ngSubmit)="onSubmit()">
     <div class="nameFormat">
       <mat-form-field>
-        <!-- Anthony, finish up. [(ngModel)]-->
         <mat-label>Prefix</mat-label>
-        <mat-select name="prefix">
+        <mat-select [(ngModel)]="model.prefix" name="prefix">
           <mat-option></mat-option>
           <mat-option value="Mr.">Mr.</mat-option>
           <mat-option value="Mrs.">Mrs.</mat-option>
@@ -16,8 +15,7 @@
         <input matInput type="text" placeholder="First Name" [(ngModel)]="model.firstName" name="firstName" />
       </mat-form-field>
       <mat-form-field>
-        <!-- Come on Anthony, get on the stick. [(ngModel)]  -->
-        <input matInput type="text" placeholder="Preferred/Nickname" name="preferred" />
+        <input matInput [(ngModel)]="model.preferredName" type="text" placeholder="Preferred/Nickname" name="preferred" />
       </mat-form-field>
       <mat-form-field>
         <input matInput type="text" placeholder="Middle Name" [(ngModel)]="model.middleName" name="middleName" />
@@ -26,9 +24,8 @@
         <input matInput type="text" placeholder="Last Name" [(ngModel)]="model.lastName" name="lastName" />
       </mat-form-field>
       <mat-form-field>
-        <!-- Anthony, finish up. [(ngModel)]-->
         <mat-label>Suffix</mat-label>
-        <mat-select name="suffix">
+        <mat-select [(ngModel)]="model.suffix" name="suffix">
           <mat-option></mat-option>
           <mat-option value="Jr.">Jr.</mat-option>
           <mat-option value="Sr.">Sr.</mat-option>
