@@ -54,7 +54,7 @@
       <h3>Phones</h3>
       <div *ngFor="let phone of model.phones">
         Phone Number: {{ phone.phoneNumber }} Type: {{ phone.type }}
-        <button mat-mat-raised-button color="primary" (click)="removePhone(phone)">
+        <button mat-raised-button color="primary" (click)="removePhone(phone)">
           Remove
         </button>
       </div>
@@ -72,7 +72,12 @@
     </button>
     <div *ngIf="model.emails.length">
       <h3>Emails</h3>
-      <div *ngFor="let email of model.emails">Email: {{ email.email }} Type: {{ email.type }}</div>
+      <div *ngFor="let email of model.emails">
+        Email: {{ email.email }} Type: {{ email.type }}
+        <button mat-raised-button color="primary" (click)="removeEmail(email)">
+          Remove
+        </button>
+      </div>
     </div>
     <div class="twoWide">
       <mat-form-field>

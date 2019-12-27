@@ -22,6 +22,10 @@ export class AddPersonComponent implements OnInit {
     this.resetPage();
   }
 
+  removeEmail(email: Email): void {
+    this.model.emails.splice(this.model.emails.indexOf(email), 1);
+  }
+
   removePhone(phone: Phone): void {
     this.model.phones.splice(this.model.phones.indexOf(phone), 1);
   }
