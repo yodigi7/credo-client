@@ -1,98 +1,99 @@
 <div>
-    <h1>Add Person</h1>
-    <form (ngSubmit)="onSubmit()">
-        <div class="nameFormat">
-            <mat-form-field>
-                <!-- Anthony, finish up. [(ngModel)]-->
-                <mat-label>Prefix</mat-label>
-                <mat-select name="prefix">
-                    <mat-option></mat-option>
-                    <mat-option value=Mr.>Mr.</mat-option>
-                    <mat-option value=Mrs.>Mrs.</mat-option>
-                    <mat-option value=Ms.>Ms.</mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="text" placeholder="First Name" [(ngModel)]="model.firstName" name="firstName">
-            </mat-form-field>
-            <mat-form-field>
-                <!-- Come on Anthony, get on the stick. [(ngModel)]  -->
-                <input matInput type="text" placeholder="Preferred/Nickname" name="preferred">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="text" placeholder="Middle Name" [(ngModel)]="model.middleName" name="middleName">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="text" placeholder="Last Name" [(ngModel)]="model.lastName" name="lastName">
-            </mat-form-field>
-            <mat-form-field>
-                <!-- Anthony, finish up. [(ngModel)]-->
-                <mat-label>Suffix</mat-label>
-                <mat-select name="suffix">
-                    <mat-option></mat-option>
-                    <mat-option value=Jr.>Jr.</mat-option>
-                    <mat-option value=Sr.>Sr.</mat-option>
-                    <mat-option value=II>II</mat-option>
-                    <mat-option value=III>III</mat-option>
-                    <mat-option value=IV>IV</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
-        <mat-form-field>
-            <input matInput type="text" placeholder="Street" type="text" [(ngModel)]="model.street" name="street">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="text" placeholder="City" [(ngModel)]="model.city" name="city">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="text" placeholder="State" [(ngModel)]="model.state" name="state">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput type="text" placeholder="zipcode" [(ngModel)]="model.zipcode" name="zipcode">
-        </mat-form-field>
-        <div *ngIf="model.phones.length">
-            <h3>Phones</h3>
-            <div *ngFor="let phone of model.phones">
-                Phone Number: {{phone.phoneNumber}}
-                Type: {{phone.type}}
-                <button mat-mat-raised-button color="primary" (click)="removePhone(phone)">Remove</button>
-            </div>
-        </div>
-        <div class="twoWide">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Phone Number" [(ngModel)]="phoneModel.phoneNumber"
-                    name="phoneNumber">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="text" placeholder="Phone Type" [(ngModel)]="phoneModel.type" name="phoneType">
-            </mat-form-field>
-        </div>
-        <button mat-raised-button type="button" color="primary" (click)="addPhone()">Add +</button>
-        <div *ngIf="model.emails.length">
-            <h3>Emails</h3>
-            <div *ngFor="let email of model.emails">
-                Email: {{email.email}}
-                Type: {{email.type}}
-            </div>
-        </div>
-        <div class="twoWide">
-            <mat-form-field>
-                <input matInput type="text" placeholder="Email" [(ngModel)]="emailModel.email" name="email">
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput type="text" placeholder="Email Type" [(ngModel)]="emailModel.type" name="emailType">
-            </mat-form-field>
-        </div>
-        <button mat-raised-button color="primary" type="button" (click)="addEmail()">Add +</button>
-            <mat-form-field>
-                <mat-label>Membership Level</mat-label>
-                <mat-select [(ngModel)]="model.membershipLevel" name="membership">
-                    <mat-option value=None>None</mat-option>
-                    <mat-option value=Green>Green</mat-option>
-                    <mat-option value=Silver>Silver</mat-option>
-                    <mat-option value=Gold>Gold</mat-option>
-                </mat-select>
-            </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">Submit</button>
-    </form>
+  <h1>Add Person</h1>
+  <form (ngSubmit)="onSubmit()">
+    <div class="nameFormat">
+      <mat-form-field>
+        <!-- Anthony, finish up. [(ngModel)]-->
+        <mat-label>Prefix</mat-label>
+        <mat-select name="prefix">
+          <mat-option></mat-option>
+          <mat-option value="Mr.">Mr.</mat-option>
+          <mat-option value="Mrs.">Mrs.</mat-option>
+          <mat-option value="Ms.">Ms.</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="First Name" [(ngModel)]="model.firstName" name="firstName" />
+      </mat-form-field>
+      <mat-form-field>
+        <!-- Come on Anthony, get on the stick. [(ngModel)]  -->
+        <input matInput type="text" placeholder="Preferred/Nickname" name="preferred" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Middle Name" [(ngModel)]="model.middleName" name="middleName" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Last Name" [(ngModel)]="model.lastName" name="lastName" />
+      </mat-form-field>
+      <mat-form-field>
+        <!-- Anthony, finish up. [(ngModel)]-->
+        <mat-label>Suffix</mat-label>
+        <mat-select name="suffix">
+          <mat-option></mat-option>
+          <mat-option value="Jr.">Jr.</mat-option>
+          <mat-option value="Sr.">Sr.</mat-option>
+          <mat-option value="II">II</mat-option>
+          <mat-option value="III">III</mat-option>
+          <mat-option value="IV">IV</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Street" type="text" [(ngModel)]="model.street" name="street" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="City" [(ngModel)]="model.city" name="city" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="State" [(ngModel)]="model.state" name="state" />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="zipcode" [(ngModel)]="model.zipcode" name="zipcode" />
+    </mat-form-field>
+    <div *ngIf="model.phones.length">
+      <h3>Phones</h3>
+      <div *ngFor="let phone of model.phones">
+        Phone Number: {{ phone.phoneNumber }} Type: {{ phone.type }}
+        <button mat-mat-raised-button color="primary" (click)="removePhone(phone)">
+          Remove
+        </button>
+      </div>
+    </div>
+    <div class="twoWide">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Phone Number" [(ngModel)]="phoneModel.phoneNumber" name="phoneNumber" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Phone Type" [(ngModel)]="phoneModel.type" name="phoneType" />
+      </mat-form-field>
+    </div>
+    <button mat-raised-button type="button" color="primary" (click)="addPhone()">
+      Add +
+    </button>
+    <div *ngIf="model.emails.length">
+      <h3>Emails</h3>
+      <div *ngFor="let email of model.emails">Email: {{ email.email }} Type: {{ email.type }}</div>
+    </div>
+    <div class="twoWide">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email" [(ngModel)]="emailModel.email" name="email" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Email Type" [(ngModel)]="emailModel.type" name="emailType" />
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="button" (click)="addEmail()">
+      Add +
+    </button>
+    <mat-form-field>
+      <mat-label>Membership Level</mat-label>
+      <mat-select [(ngModel)]="model.membershipLevel" name="membership">
+        <mat-option value="None">None</mat-option>
+        <mat-option value="Green">Green</mat-option>
+        <mat-option value="Silver">Silver</mat-option>
+        <mat-option value="Gold">Gold</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
 </div>
