@@ -7,7 +7,7 @@ import { Phone, Email, Person } from "../person/person";
   styleUrls: ["./add-person.component.scss"]
 })
 export class AddPersonComponent implements OnInit {
-  model = new Person(null, null, null, null, null, null, null, null, null, null, [], [], null);
+  model = new Person();
   phoneModel: Phone = { phoneNumber: null, type: null };
   emailModel: Email = { email: null, type: null };
   submitted = false;
