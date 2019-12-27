@@ -21,7 +21,7 @@ export class Person {
   zipcode: string;
   emails: Array<Email>;
   phones: Array<Phone>;
-  membershipType: string;
+  membershipLevel: string;
   constructor(
     prefix,
     firstName,
@@ -35,7 +35,7 @@ export class Person {
     zipcode,
     emails,
     phones,
-    membershipType
+    membershipLevel
   ) {
     this.prefix = prefix;
     this.firstName = firstName;
@@ -49,6 +49,6 @@ export class Person {
     this.zipcode = zipcode;
     this.emails = emails;
     this.phones = phones;
-    this.membershipType = membershipType;
+    this.membershipLevel = membershipLevel;
   }
 }
