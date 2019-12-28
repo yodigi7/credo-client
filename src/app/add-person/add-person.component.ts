@@ -1,5 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { IPhone, IEmail, Person, IDonation, IEvent, IPerson } from "../person/person";
+import {
+  IPhone,
+  IEmail,
+  Person,
+  IDonation,
+  IEvent,
+  IPerson
+} from "../person/person";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-add-person",
@@ -14,7 +22,7 @@ export class AddPersonComponent implements OnInit {
   eventModel: IEvent = {};
   submitted = false;
 
-  constructor() {}
+  constructor(private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.resetPage();
@@ -22,8 +30,13 @@ export class AddPersonComponent implements OnInit {
 
   onSubmit(): void {
     window.alert("Person would be added to the DB when connected");
+    this.openSnackbar("Added Person");
     this.submitted = true;
     this.resetPage();
+  }
+
+  openSnackbar(message: string): void {
+    this.snackBar.open(message, "Close");
   }
 
   removeEmail(email: IEmail): void {
@@ -105,42 +118,31 @@ export class AddPersonComponent implements OnInit {
     }
   }
 
-  cleanModel() {
-    if (this.model.phones.length === 0) {
-      delete this.model.phones;
+  cleanModel(model: IPerson) {
+    if (model.phones.length === 0) {
+      delete model.phones;
     }
-    if (this.model.emails.length === 0) {
-      delete this.model.emails;
+    if (model.emails.length === 0) {
+      delete model.emails;
     }
-    if (this.model.donations.length === 0) {
-      delete this.model.donations;
+    if (model.donations.length === 0) {
+      delete model.donations;
     }
-    if (this.model.events.length === 0) {
-      delete this.model.events;
-    }
-  }
-
-  dirtyModel() {
-    if (!this.model.phones) {
-      this.model.phones = [];
-    }
-    if (!this.model.emails) {
-      this.model.emails = [];
-    }
-    if (!this.model.donations) {
-      this.model.donations = [];
-    }
-    if (!this.model.events) {
-      this.model.events = [];
+    if (model.events.length === 0) {
+      delete model.events;
     }
   }
 
   search(): void {
-    let tempModel = Person.fromData(this.model);
+    const tempModel = Person.fromData(this.model);
     this.addModelsToPerson(tempModel);
-    this.cleanModel();
-    window.alert(`Would search for person and populate the rest of the data, you gave me: ${JSON.stringify(tempModel)}`)
-    this.dirtyModel();
+    this.cleanModel(tempModel);
+    window.alert(
+      `Would search for person and populate the rest of the data, you gave me: ${JSON.stringify(
+        tempModel
+      )}`
+    );
+    this.openSnackbar("Looked up person successfully");
   }
 
   resetPage(): void {

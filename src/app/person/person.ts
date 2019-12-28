@@ -58,15 +58,15 @@ export class Person {
   donations: Array<IDonation>;
   events: Array<IEvent>;
   notes?: string;
-  constructor () {
+  constructor() {
     this.emails = [];
     this.phones = [];
     this.donations = [];
     this.events = [];
-  };
+  }
 
-  static fromData (personInp: IPerson): Person {
-    let person = new Person();
+  static fromData(personInp: IPerson): Person {
+    const person = new Person();
     person.prefix = personInp.prefix;
     person.firstName = personInp.firstName;
     person.preferredName = personInp.preferredName;
@@ -77,13 +77,21 @@ export class Person {
     person.city = personInp.city;
     person.state = personInp.state;
     person.zipcode = personInp.zipcode;
-    person.emails = personInp.emails ? JSON.parse(JSON.stringify(personInp.emails)) : [];
-    person.phones = personInp.phones ? JSON.parse(JSON.stringify(personInp.phones)) : [];
+    person.emails = personInp.emails
+      ? JSON.parse(JSON.stringify(personInp.emails))
+      : [];
+    person.phones = personInp.phones
+      ? JSON.parse(JSON.stringify(personInp.phones))
+      : [];
     person.membershipLevel = personInp.membershipLevel;
     person.currentMember = personInp.currentMember;
-    person.donations = personInp.donations ? JSON.parse(JSON.stringify(personInp.donations)) : [];
-    person.events = personInp.events ? JSON.parse(JSON.stringify(personInp.events)) : [];
+    person.donations = personInp.donations
+      ? JSON.parse(JSON.stringify(personInp.donations))
+      : [];
+    person.events = personInp.events
+      ? JSON.parse(JSON.stringify(personInp.events))
+      : [];
     person.notes = personInp.notes;
     return person;
-  };
+  }
 }
