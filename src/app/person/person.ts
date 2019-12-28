@@ -37,6 +37,7 @@ export interface IPerson {
   currentMember?: boolean;
   donations?: Array<IDonation>;
   events?: Array<IEvent>;
+  notes?: string;
 }
 
 export class Person {
@@ -56,6 +57,7 @@ export class Person {
   currentMember: boolean;
   donations: Array<IDonation>;
   events: Array<IEvent>;
+  notes?: string;
   constructor () {
     this.emails = [];
     this.phones = [];
@@ -81,6 +83,7 @@ export class Person {
     person.currentMember = personInp.currentMember;
     person.donations = personInp.donations ? personInp.donations : [];
     person.events = personInp.events ? personInp.events : [];
+    person.notes = personInp.notes;
     return person;
   };
 }
