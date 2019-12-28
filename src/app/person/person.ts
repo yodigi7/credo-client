@@ -11,6 +11,7 @@ export interface IEmail {
 export interface IDonation {
   amount?: number;
   date?: Date;
+  notes?: string;
 }
 
 export interface IEvent {

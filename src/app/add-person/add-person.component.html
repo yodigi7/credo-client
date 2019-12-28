@@ -106,7 +106,7 @@
         </button>
       </div>
     </div>
-    <div class="twoWide">
+    <div class="threeWide">
       <mat-form-field>
         <input matInput type="text" placeholder="Donation Amount" [(ngModel)]="donationModel.amount" name="donation" />
       </mat-form-field>
@@ -114,6 +114,9 @@
         <input matInput [matDatepicker]="donationDatePicker" placeholder="Donation Date" [(ngModel)]="donationModel.date" name="donationDate" />
         <mat-datepicker-toggle matSuffix [for]="donationDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #donationDatePicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput type="text" placeholder="Donation Amount" [(ngModel)]="donationModel.amount" name="donation"></textarea>
       </mat-form-field>
     </div>
     <button mat-raised-button color="primary" type="button" (click)="addDonation()">

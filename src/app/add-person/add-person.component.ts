@@ -57,7 +57,7 @@ export class AddPersonComponent implements OnInit {
   }
 
   addDonation(): void {
-    if (this.donationModel.amount || this.donationModel.date) {
+    if (this.donationModel.amount || this.donationModel.date || this.donationModel.notes) {
       this.model.donations.push(this.donationModel);
       this.donationModel = {};
     }
