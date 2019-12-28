@@ -43,23 +43,31 @@ export class AddPersonComponent implements OnInit {
   }
 
   addPhone(): void {
-    this.model.phones.push(this.phoneModel);
-    this.phoneModel = {};
+    if (this.phoneModel.phoneNumber || this.phoneModel.type) {
+      this.model.phones.push(this.phoneModel);
+      this.phoneModel = {};
+    }
   }
 
   addEmail(): void {
-    this.model.emails.push(this.emailModel);
-    this.emailModel = {};
+    if (this.emailModel.email || this.emailModel.type) {
+      this.model.emails.push(this.emailModel);
+      this.emailModel = {};
+    }
   }
 
   addDonation(): void {
-    this.model.donations.push(this.donationModel);
-    this.donationModel = {};
+    if (this.donationModel.amount || this.donationModel.date) {
+      this.model.donations.push(this.donationModel);
+      this.donationModel = {};
+    }
   }
 
   addEvent(): void {
-    this.model.events.push(this.eventModel);
-    this.eventModel = {};
+    if (this.eventModel.amount || this.eventModel.date || this.eventModel.name) {
+      this.model.events.push(this.eventModel);
+      this.eventModel = {};
+    }
   }
 
   resetPage(): void {
