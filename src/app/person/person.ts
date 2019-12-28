@@ -77,12 +77,12 @@ export class Person {
     person.city = personInp.city;
     person.state = personInp.state;
     person.zipcode = personInp.zipcode;
-    person.emails = personInp.emails ? personInp.emails : [];
-    person.phones = personInp.phones ? personInp.phones : [];
+    person.emails = personInp.emails ? JSON.parse(JSON.stringify(personInp.emails)) : [];
+    person.phones = personInp.phones ? JSON.parse(JSON.stringify(personInp.phones)) : [];
     person.membershipLevel = personInp.membershipLevel;
     person.currentMember = personInp.currentMember;
-    person.donations = personInp.donations ? personInp.donations : [];
-    person.events = personInp.events ? personInp.events : [];
+    person.donations = personInp.donations ? JSON.parse(JSON.stringify(personInp.donations)) : [];
+    person.events = personInp.events ? JSON.parse(JSON.stringify(personInp.events)) : [];
     person.notes = personInp.notes;
     return person;
   };

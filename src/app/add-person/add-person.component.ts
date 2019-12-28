@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { IPhone, IEmail, Person, IDonation, IEvent } from "../person/person";
+import { IPhone, IEmail, Person, IDonation, IEvent, IPerson } from "../person/person";
 
 @Component({
   selector: "app-add-person",
@@ -43,31 +43,104 @@ export class AddPersonComponent implements OnInit {
   }
 
   addPhone(): void {
-    if (this.phoneModel.phoneNumber || this.phoneModel.type) {
+    if (!this.isEmptyPhone(this.phoneModel)) {
       this.model.phones.push(this.phoneModel);
       this.phoneModel = {};
     }
   }
 
   addEmail(): void {
-    if (this.emailModel.email || this.emailModel.type) {
+    if (this.isEmptyEmail(this.emailModel)) {
       this.model.emails.push(this.emailModel);
       this.emailModel = {};
     }
   }
 
   addDonation(): void {
-    if (this.donationModel.amount || this.donationModel.date || this.donationModel.notes) {
+    if (this.isEmptyDonation(this.donationModel)) {
       this.model.donations.push(this.donationModel);
       this.donationModel = {};
     }
   }
 
   addEvent(): void {
-    if (this.eventModel.amount || this.eventModel.date || this.eventModel.name) {
+    if (!this.isEmptyEvent(this.eventModel)) {
       this.model.events.push(this.eventModel);
       this.eventModel = {};
     }
+  }
+
+  isEmptyPhone(phoneModel: IPhone) {
+    return !(phoneModel.phoneNumber || phoneModel.type);
+  }
+
+  isEmptyEmail(emailModel: IEmail) {
+    return !(emailModel.email || emailModel.type);
+  }
+
+  isEmptyDonation(donationModel: IDonation) {
+    return !(donationModel.amount || donationModel.date || donationModel.notes);
+  }
+
+  isEmptyEvent(eventModel: IEvent) {
+    return !(eventModel.amount || eventModel.date || eventModel.name);
+  }
+
+  addModelsToPerson(model: IPerson) {
+    if (!this.isEmptyPhone(this.phoneModel)) {
+      model.phones.push(this.phoneModel);
+      this.phoneModel = {};
+    }
+    if (!this.isEmptyEmail(this.emailModel)) {
+      model.emails.push(this.emailModel);
+      this.emailModel = {};
+    }
+    if (!this.isEmptyDonation(this.donationModel)) {
+      model.donations.push(this.donationModel);
+      this.donationModel = {};
+    }
+    if (!this.isEmptyEvent(this.eventModel)) {
+      model.events.push(this.eventModel);
+      this.eventModel = {};
+    }
+  }
+
+  cleanModel() {
+    if (this.model.phones.length === 0) {
+      delete this.model.phones;
+    }
+    if (this.model.emails.length === 0) {
+      delete this.model.emails;
+    }
+    if (this.model.donations.length === 0) {
+      delete this.model.donations;
+    }
+    if (this.model.events.length === 0) {
+      delete this.model.events;
+    }
+  }
+
+  dirtyModel() {
+    if (!this.model.phones) {
+      this.model.phones = [];
+    }
+    if (!this.model.emails) {
+      this.model.emails = [];
+    }
+    if (!this.model.donations) {
+      this.model.donations = [];
+    }
+    if (!this.model.events) {
+      this.model.events = [];
+    }
+  }
+
+  search(): void {
+    let tempModel = Person.fromData(this.model);
+    this.addModelsToPerson(tempModel);
+    this.cleanModel();
+    window.alert(`Would search for person and populate the rest of the data, you gave me: ${JSON.stringify(tempModel)}`)
+    this.dirtyModel();
   }
 
   resetPage(): void {
