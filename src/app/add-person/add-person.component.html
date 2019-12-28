@@ -47,6 +47,16 @@
     <mat-form-field>
       <input matInput type="text" placeholder="zipcode" [(ngModel)]="model.zipcode" name="zipcode" />
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Membership Level</mat-label>
+      <mat-select [(ngModel)]="model.membershipLevel" name="membership">
+        <mat-option value="None">None</mat-option>
+        <mat-option value="Green">Green</mat-option>
+        <mat-option value="Silver">Silver</mat-option>
+        <mat-option value="Gold">Gold</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox name="currentMember" [(ngModel)]="model.currentMember">Current Member</mat-checkbox>
     <div *ngIf="model.phones.length">
       <h3>Phones</h3>
       <div *ngFor="let phone of model.phones">
@@ -87,16 +97,6 @@
     <button mat-raised-button color="primary" type="button" (click)="addEmail()">
       Add +
     </button>
-    <mat-form-field>
-      <mat-label>Membership Level</mat-label>
-      <mat-select [(ngModel)]="model.membershipLevel" name="membership">
-        <mat-option value="None">None</mat-option>
-        <mat-option value="Green">Green</mat-option>
-        <mat-option value="Silver">Silver</mat-option>
-        <mat-option value="Gold">Gold</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-checkbox name="currentMember" [(ngModel)]="model.currentMember">Current Member</mat-checkbox>
     <div *ngIf="model.donations.length">
       <h3>Donations</h3>
       <div *ngFor="let donation of model.donations">
