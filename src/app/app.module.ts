@@ -11,10 +11,14 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { LoginComponent } from "./login/login.component";
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent, AddPersonComponent, LoginComponent],
   imports: [
+    MatCheckboxModule,
+    MatNativeDateModule,
     MatDatepickerModule,
     MatButtonModule,
     MatSelectModule,

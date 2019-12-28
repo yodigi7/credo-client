@@ -96,6 +96,54 @@
         <mat-option value="Gold">Gold</mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-checkbox name="currentMember" [(ngModel)]="model.currentMember">Current Member</mat-checkbox>
+    <div *ngIf="model.donations.length">
+      <h3>Donations</h3>
+      <div *ngFor="let donation of model.donations">
+        Amount: {{ donation.amount }} Date: {{ donation.date }}
+        <button mat-raised-button type="button" color="primary" (click)="removeDonation(donation)">
+          Remove
+        </button>
+      </div>
+    </div>
+    <div class="twoWide">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Donation Amount" [(ngModel)]="donationModel.amount" name="donation" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="donationDatePicker" placeholder="Donation Date" [(ngModel)]="donationModel.date" name="donationDate" />
+        <mat-datepicker-toggle matSuffix [for]="donationDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #donationDatePicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="button" (click)="addDonation()">
+      Add +
+    </button>
+    <div *ngIf="model.events.length">
+      <h3>Events</h3>
+      <div *ngFor="let event of model.events">
+        Event: {{ event.name }} Date: {{ event.date }} Amount: {{ event.amount }}
+        <button mat-raised-button color="primary" type="button" (click)="removeEvent(event)">
+          Remove
+        </button>
+      </div>
+    </div>
+    <div class="threeWide">
+      <mat-form-field>
+        <input matInput type="text" placeholder="Event Name" [(ngModel)]="eventModel.name" name="eventName" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="eventDatePicker" placeholder="Event Date" [(ngModel)]="eventModel.date" name="eventDate" />
+        <mat-datepicker-toggle matSuffix [for]="eventDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #eventDatePicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" placeholder="Amount" [(ngModel)]="eventModel.amount" name="eventAmount" />
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="button" (click)="addEvent()">
+      Add +
+    </button>
     <button mat-raised-button color="primary" type="submit">Submit</button>
   </form>
 </div>

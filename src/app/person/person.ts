@@ -1,21 +1,22 @@
 export interface IPhone {
-  phoneNumber: number;
-  type: string;
-}
-
-export class Phone {
-  phoneNumber: number;
-  type: string;
+  phoneNumber?: number;
+  type?: string;
 }
 
 export interface IEmail {
-  email: string;
-  type: string;
+  email?: string;
+  type?: string;
 }
 
-export class Email {
-  email: string;
-  type: string;
+export interface IDonation {
+  amount?: number;
+  date?: Date;
+}
+
+export interface IEvent {
+  name?: string;
+  amount?: number;
+  date?: Date;
 }
 
 export interface IPerson {
@@ -32,6 +33,9 @@ export interface IPerson {
   emails?: Array<IEmail>;
   phones?: Array<IPhone>;
   membershipLevel?: string;
+  currentMember?: boolean;
+  donations?: Array<IDonation>;
+  events?: Array<IEvent>;
 }
 
 export class Person {
@@ -45,31 +49,37 @@ export class Person {
   city: string;
   state: string;
   zipcode: string;
-  emails: Array<Email>;
-  phones: Array<Phone>;
+  emails: Array<IEmail>;
+  phones: Array<IPhone>;
   membershipLevel: string;
+  currentMember: boolean;
+  donations: Array<IDonation>;
+  events: Array<IEvent>;
   constructor () {
-    return Person.fromData({
-      emails: [],
-      phones: []
-    });
+    this.emails = [];
+    this.phones = [];
+    this.donations = [];
+    this.events = [];
   };
 
   static fromData (personInp: IPerson): Person {
     let person = new Person();
-    personInp.prefix = person.prefix;
-    personInp.firstName = person.firstName;
-    personInp.preferredName = person.preferredName;
-    personInp.middleName = person.middleName;
-    personInp.lastName = person.lastName;
-    personInp.suffix = person.suffix;
-    personInp.street = person.street;
-    personInp.city = person.city;
-    personInp.state = person.state;
-    personInp.zipcode = person.zipcode;
-    personInp.emails = person.emails;
-    personInp.phones = person.phones;
-    personInp.membershipLevel = person.membershipLevel;
+    person.prefix = personInp.prefix;
+    person.firstName = personInp.firstName;
+    person.preferredName = personInp.preferredName;
+    person.middleName = personInp.middleName;
+    person.lastName = personInp.lastName;
+    person.suffix = personInp.suffix;
+    person.street = personInp.street;
+    person.city = personInp.city;
+    person.state = personInp.state;
+    person.zipcode = personInp.zipcode;
+    person.emails = personInp.emails ? personInp.emails : [];
+    person.phones = personInp.phones ? personInp.phones : [];
+    person.membershipLevel = personInp.membershipLevel;
+    person.currentMember = personInp.currentMember;
+    person.donations = personInp.donations ? personInp.donations : [];
+    person.events = personInp.events ? personInp.events : [];
     return person;
   };
 }

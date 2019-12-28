@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { Phone, Email, Person } from "../person/person";
+import { IPhone, IEmail, Person, IDonation, IEvent } from "../person/person";
 
 @Component({
   selector: "app-add-person",
@@ -8,13 +8,17 @@ import { Phone, Email, Person } from "../person/person";
 })
 export class AddPersonComponent implements OnInit {
   model = new Person();
-  phoneModel: Phone = { phoneNumber: null, type: null };
-  emailModel: Email = { email: null, type: null };
+  phoneModel: IPhone = {};
+  emailModel: IEmail = {};
+  donationModel: IDonation = {};
+  eventModel: IEvent = {};
   submitted = false;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.resetPage();
+  }
 
   onSubmit(): void {
     window.alert("Person would be added to the DB when connected");
@@ -22,30 +26,48 @@ export class AddPersonComponent implements OnInit {
     this.resetPage();
   }
 
-  removeEmail(email: Email): void {
+  removeEmail(email: IEmail): void {
     this.model.emails.splice(this.model.emails.indexOf(email), 1);
   }
 
-  removePhone(phone: Phone): void {
+  removePhone(phone: IPhone): void {
     this.model.phones.splice(this.model.phones.indexOf(phone), 1);
   }
 
+  removeDonation(donation: IDonation): void {
+    this.model.donations.splice(this.model.donations.indexOf(donation), 1);
+  }
+
+  removeEvent(event: IEvent): void {
+    this.model.events.splice(this.model.events.indexOf(event), 1);
+  }
+
   addPhone(): void {
-    console.log(this.phoneModel);
-    console.log(this.model.phones);
     this.model.phones.push(this.phoneModel);
-    this.phoneModel = { phoneNumber: null, type: null };
+    this.phoneModel = {};
   }
 
   addEmail(): void {
     this.model.emails.push(this.emailModel);
-    this.emailModel = { email: null, type: null };
+    this.emailModel = {};
+  }
+
+  addDonation(): void {
+    this.model.donations.push(this.donationModel);
+    this.donationModel = {};
+  }
+
+  addEvent(): void {
+    this.model.events.push(this.eventModel);
+    this.eventModel = {};
   }
 
   resetPage(): void {
-    this.model = new Person(null, null, null, null, null, null, null, null, null, null, [], [], null);
-    this.phoneModel = { phoneNumber: null, type: null };
-    this.emailModel = { email: null, type: null };
+    this.model = new Person();
+    this.phoneModel = {};
+    this.emailModel = {};
+    this.donationModel = {};
+    this.eventModel = {};
     this.submitted = false;
   }
 }
