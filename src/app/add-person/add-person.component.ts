@@ -1,12 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  IPhone,
-  IEmail,
-  Person,
-  IDonation,
-  IEvent,
-  IPerson
-} from "../person/person";
+import { IPhone, IEmail, Person, IDonation, IEvent, IPerson } from "../person/person";
 import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
@@ -137,11 +130,7 @@ export class AddPersonComponent implements OnInit {
     const tempModel = Person.fromData(this.model);
     this.addModelsToPerson(tempModel);
     this.cleanModel(tempModel);
-    window.alert(
-      `Would search for person and populate the rest of the data, you gave me: ${JSON.stringify(
-        tempModel
-      )}`
-    );
+    window.alert(`Would search for person and populate the rest of the data, you gave me: ${JSON.stringify(tempModel)}`);
     this.openSnackbar("Looked up person successfully");
   }
 

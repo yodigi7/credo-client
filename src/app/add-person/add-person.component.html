@@ -111,12 +111,24 @@
         <input matInput type="text" placeholder="Donation Amount" [(ngModel)]="donationModel.amount" name="donationAmount" />
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="donationDatePicker" placeholder="Donation Date" [(ngModel)]="donationModel.date" name="donationDate" />
+        <input
+          matInput
+          [matDatepicker]="donationDatePicker"
+          placeholder="Donation Date"
+          [(ngModel)]="donationModel.date"
+          name="donationDate"
+        />
         <mat-datepicker-toggle matSuffix [for]="donationDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #donationDatePicker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput type="text" placeholder="Donation Notes" [(ngModel)]="donationModel.amount" name="donationNotes"></textarea>
+        <textarea
+          matInput
+          type="text"
+          placeholder="Donation Notes"
+          [(ngModel)]="donationModel.amount"
+          name="donationNotes"
+        ></textarea>
       </mat-form-field>
     </div>
     <button mat-raised-button color="primary" type="button" (click)="addDonation()">
@@ -136,7 +148,13 @@
         <input matInput type="text" placeholder="Event Name" [(ngModel)]="eventModel.name" name="eventName" />
       </mat-form-field>
       <mat-form-field>
-        <input matInput [matDatepicker]="eventDatePicker" placeholder="Event Date" [(ngModel)]="eventModel.date" name="eventDate" />
+        <input
+          matInput
+          [matDatepicker]="eventDatePicker"
+          placeholder="Event Date"
+          [(ngModel)]="eventModel.date"
+          name="eventDate"
+        />
         <mat-datepicker-toggle matSuffix [for]="eventDatePicker"></mat-datepicker-toggle>
         <mat-datepicker #eventDatePicker></mat-datepicker>
       </mat-form-field>
