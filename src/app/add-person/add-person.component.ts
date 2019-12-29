@@ -29,7 +29,7 @@ export class AddPersonComponent implements OnInit {
   }
 
   openSnackbar(message: string): void {
-    this.snackBar.open(message, "Close");
+    this.snackBar.open(message, "Close", { duration: 3000 });
   }
 
   removeEmail(email: IEmail): void {
