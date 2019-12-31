@@ -1,5 +1,5 @@
 export interface IPhone {
-  phoneNumber?: number;
+  number?: number;
   type?: string;
 }
 

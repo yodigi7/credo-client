@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { IPhone, IEmail, Person, IDonation, IEvent, IPerson } from "../person/person";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { GraphqlService } from '../graphql/graphql.service';
 
 @Component({
   selector: "app-add-person",
@@ -15,14 +16,28 @@ export class AddPersonComponent implements OnInit {
   eventModel: IEvent = {};
   submitted = false;
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private graphqlService: GraphqlService
+  ) {}
 
   ngOnInit(): void {
     this.resetPage();
+    this.graphqlService.getPersons();
   }
 
   onSubmit(): void {
-    window.alert("Person would be added to the DB when connected");
+    const tempModel = Person.fromData(this.model);
+    this.addModelsToPerson(tempModel);
+    this.cleanModel(tempModel);
+    this.graphqlService.addPerson(tempModel).subscribe(({ data }) => {
+      this.openSnackbar("Successfully added to mongoDB");
+      console.log(data);
+    }, (error) => {
+      this.openSnackbar("Failed to add person");
+      console.error(error);
+    });
+    // window.alert("Person would be added to the DB when connected");
     this.openSnackbar("Added Person");
     this.submitted = true;
     this.resetPage();
@@ -77,7 +92,7 @@ export class AddPersonComponent implements OnInit {
   }
 
   isEmptyPhone(phoneModel: IPhone) {
-    return !(phoneModel.phoneNumber || phoneModel.type);
+    return !(phoneModel.number || phoneModel.type);
   }
 
   isEmptyEmail(emailModel: IEmail) {

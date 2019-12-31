@@ -60,7 +60,7 @@
     <div *ngIf="model.phones.length">
       <h3>Phones</h3>
       <div *ngFor="let phone of model.phones">
-        Phone Number: {{ phone.phoneNumber }} Type: {{ phone.type }}
+        Phone Number: {{ phone.number }} Type: {{ phone.type }}
         <button mat-raised-button color="primary" (click)="removePhone(phone)">
           Remove
         </button>
@@ -68,7 +68,7 @@
     </div>
     <div class="twoWide">
       <mat-form-field>
-        <input matInput type="text" placeholder="Phone Number" [(ngModel)]="phoneModel.phoneNumber" name="phoneNumber" />
+        <input matInput type="text" placeholder="Phone Number" [(ngModel)]="phoneModel.number" name="phoneNumber" />
       </mat-form-field>
       <mat-form-field>
         <input matInput type="text" placeholder="Phone Type" [(ngModel)]="phoneModel.type" name="phoneType" />
