@@ -1,6 +1,7 @@
 <div>
   <h1>Add Person</h1>
   <form (ngSubmit)="onSubmit()">
+    ID: {{ model._id }}
     <div class="nameFormat">
       <mat-form-field>
         <mat-label>Prefix</mat-label>
@@ -56,11 +57,13 @@
         <mat-option value="Gold">Gold</mat-option>
       </mat-select>
     </mat-form-field>
+    Current Member: {{ model.currentMember }}
     <mat-checkbox name="currentMember" [(ngModel)]="model.currentMember">Current Member</mat-checkbox>
+    Phones length: {{ model.phones.length }}
     <div *ngIf="model.phones.length">
       <h3>Phones</h3>
       <div *ngFor="let phone of model.phones">
-        Phone Number: {{ phone.number }} Type: {{ phone.type }}
+        Phone Number: {{ phone.phoneNumber }} Type: {{ phone.type }}
         <button mat-raised-button color="primary" (click)="removePhone(phone)">
           Remove
         </button>
@@ -68,7 +71,7 @@
     </div>
     <div class="twoWide">
       <mat-form-field>
-        <input matInput type="text" placeholder="Phone Number" [(ngModel)]="phoneModel.number" name="phoneNumber" />
+        <input matInput type="text" placeholder="Phone Number" [(ngModel)]="phoneModel.phoneNumber" name="phoneNumber" />
       </mat-form-field>
       <mat-form-field>
         <input matInput type="text" placeholder="Phone Type" [(ngModel)]="phoneModel.type" name="phoneType" />
@@ -126,7 +129,7 @@
           matInput
           type="text"
           placeholder="Donation Notes"
-          [(ngModel)]="donationModel.amount"
+          [(ngModel)]="donationModel.notes"
           name="donationNotes"
         ></textarea>
       </mat-form-field>

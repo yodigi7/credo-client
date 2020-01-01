@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { IPhone, IEmail, Person, IDonation, IEvent, IPerson } from "../person/person";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import { GraphqlService } from '../graphql/graphql.service';
+import { GraphqlService } from "../graphql/graphql.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-add-person",
@@ -15,28 +16,30 @@ export class AddPersonComponent implements OnInit {
   donationModel: IDonation = {};
   eventModel: IEvent = {};
   submitted = false;
+  searchObservable: Subscription;
 
-  constructor(
-    private snackBar: MatSnackBar,
-    private graphqlService: GraphqlService
-  ) {}
+  constructor(private snackBar: MatSnackBar, private graphqlService: GraphqlService) {}
 
   ngOnInit(): void {
     this.resetPage();
-    this.graphqlService.getPersons();
   }
 
   onSubmit(): void {
     const tempModel = Person.fromData(this.model);
     this.addModelsToPerson(tempModel);
     this.cleanModel(tempModel);
-    this.graphqlService.addPerson(tempModel).subscribe(({ data }) => {
-      this.openSnackbar("Successfully added to mongoDB");
-      console.log(data);
-    }, (error) => {
-      this.openSnackbar("Failed to add person");
-      console.error(error);
-    });
+    if (tempModel._id) {
+    } else {
+      this.graphqlService.addPerson(tempModel).subscribe(
+        ({ data }) => {
+          this.openSnackbar("Successfully added to mongoDB");
+        },
+        error => {
+          this.openSnackbar("Failed to add person");
+          console.error(error);
+        }
+      );
+    }
     // window.alert("Person would be added to the DB when connected");
     this.openSnackbar("Added Person");
     this.submitted = true;
@@ -92,7 +95,7 @@ export class AddPersonComponent implements OnInit {
   }
 
   isEmptyPhone(phoneModel: IPhone) {
-    return !(phoneModel.number || phoneModel.type);
+    return !(phoneModel.phoneNumber || phoneModel.type);
   }
 
   isEmptyEmail(emailModel: IEmail) {
@@ -142,14 +145,23 @@ export class AddPersonComponent implements OnInit {
   }
 
   search(): void {
+    console.log("SEARCHING");
     const tempModel = Person.fromData(this.model);
     this.addModelsToPerson(tempModel);
     this.cleanModel(tempModel);
-    window.alert(`Would search for person and populate the rest of the data, you gave me: ${JSON.stringify(tempModel)}`);
-    this.openSnackbar("Looked up person successfully");
+    this.searchObservable = this.graphqlService.getPersons(tempModel).subscribe(resp => {
+      this.searchObservable.unsubscribe();
+      if (resp.length === 0) {
+        this.openSnackbar("Failed to find anyone");
+      } else {
+        this.model = Person.fromData(resp[0]);
+        console.log(this.model);
+      }
+    });
   }
 
   resetPage(): void {
+    console.log("RESETTING PAGE");
     this.model = new Person();
     this.phoneModel = {};
     this.emailModel = {};

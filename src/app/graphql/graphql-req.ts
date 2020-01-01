@@ -1,18 +1,26 @@
-interface getPersonsReq {
+import { IDonation, IEmail, IEvent, IPhone } from "../person/person";
+
+export interface GetPersonsReq {
   _id?: string;
   prefix?: string;
   firstName?: string;
   preferredName?: string;
-  middleName?: String
-  lastName?: String
-  suffix?: String
-  street?: String
-  city?: String
-  state?: String
-  zipcode?: String
-  membershipLevel?: String
+  middleName?: string;
+  lastName?: string;
+  suffix?: string;
+  street?: string;
+  city?: string;
+  state?: string;
+  zipcode?: string;
+  membershipLevel?: string;
+  emails?: Array<IEmail>;
+  phones?: Array<IPhone>;
+  currentMember?: boolean;
+  donations?: Array<IDonation>;
+  events?: Array<IEvent>;
+  notes?: string;
 }
 
-interface getPersonReq {
+export interface GetPersonReq {
   _id: string;
 }

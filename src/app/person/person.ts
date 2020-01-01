@@ -1,5 +1,5 @@
 export interface IPhone {
-  number?: number;
+  phoneNumber?: number;
   type?: string;
 }
 
@@ -10,17 +10,18 @@ export interface IEmail {
 
 export interface IDonation {
   amount?: number;
-  date?: Date;
+  date?: Date | string;
   notes?: string;
 }
 
 export interface IEvent {
   name?: string;
   amount?: number;
-  date?: Date;
+  date?: Date | string;
 }
 
 export interface IPerson {
+  _id?: string;
   prefix?: string;
   firstName?: string;
   preferredName?: string;
@@ -41,6 +42,7 @@ export interface IPerson {
 }
 
 export class Person {
+  _id: string;
   prefix: string;
   firstName: string;
   preferredName: string;
@@ -67,6 +69,7 @@ export class Person {
 
   static fromData(personInp: IPerson): Person {
     const person = new Person();
+    person._id = personInp._id;
     person.prefix = personInp.prefix;
     person.firstName = personInp.firstName;
     person.preferredName = personInp.preferredName;
