@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { IPhone, IEmail, Person, IDonation, IEvent, IPerson } from "../person/person";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { Subscription } from "rxjs";
+import { DatabaseServiceService } from "../database-service.service";
 
 @Component({
   selector: "app-add-person",
@@ -14,22 +16,40 @@ export class AddPersonComponent implements OnInit {
   donationModel: IDonation = {};
   eventModel: IEvent = {};
   submitted = false;
+  searchObservable: Subscription;
 
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar, private databaseService: DatabaseServiceService) {}
 
   ngOnInit(): void {
     this.resetPage();
+    this.model.address = {};
+    this.model.parish = {};
   }
 
   onSubmit(): void {
-    window.alert("Person would be added to the DB when connected");
+    const tempModel = Person.fromData(this.model);
+    this.addModelsToPerson(tempModel);
+    this.cleanModel(tempModel);
+    if (tempModel.id) {
+    } else {
+      this.databaseService.addPerson(tempModel).subscribe(
+        resp => {
+          this.openSnackbar("Successfully added to mongoDB");
+        },
+        error => {
+          this.openSnackbar("Failed to add person");
+          console.error(error);
+        }
+      );
+    }
+    // window.alert("Person would be added to the DB when connected");
     this.openSnackbar("Added Person");
     this.submitted = true;
     this.resetPage();
   }
 
   openSnackbar(message: string): void {
-    this.snackBar.open(message, "Close");
+    this.snackBar.open(message, "Close", { duration: 3000 });
   }
 
   removeEmail(email: IEmail): void {
@@ -127,15 +147,27 @@ export class AddPersonComponent implements OnInit {
   }
 
   search(): void {
+    console.log("SEARCHING");
     const tempModel = Person.fromData(this.model);
     this.addModelsToPerson(tempModel);
     this.cleanModel(tempModel);
-    window.alert(`Would search for person and populate the rest of the data, you gave me: ${JSON.stringify(tempModel)}`);
-    this.openSnackbar("Looked up person successfully");
+    // Replace with new getPersons
+    // this.searchObservable = this.graphqlService.getPersons(tempModel).subscribe(resp => {
+    //   this.searchObservable.unsubscribe();
+    //   if (resp.length === 0) {
+    //     this.openSnackbar("Failed to find anyone");
+    //   } else {
+    //     this.model = Person.fromData(resp[0]);
+    //     console.log(this.model);
+    //   }
+    // });
   }
 
   resetPage(): void {
+    console.log("RESETTING PAGE");
     this.model = new Person();
+    this.model.address = {};
+    this.model.parish = {};
     this.phoneModel = {};
     this.emailModel = {};
     this.donationModel = {};

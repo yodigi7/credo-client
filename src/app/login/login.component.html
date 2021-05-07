@@ -1,9 +1,11 @@
-<form (ngSubmit)="authenticate()">
+<form [formGroup]="checkoutForm" (ngSubmit)="authenticate()">
   <mat-form-field>
-    <input matInput placeholder="Username" />
+    <input matInput placeholder="Username" formControlName="username" />
   </mat-form-field>
+  {{ username }}
   <mat-form-field>
-    <input type="password" matInput placeholder="Password" />
+    <input type="password" matInput placeholder="Password" formControlName="password" />
   </mat-form-field>
+  {{ password }}
   <button mat-raised-button type="submit" color="primary">Submit</button>
 </form>
