@@ -33,13 +33,14 @@ export class AddPersonComponent implements OnInit {
     if (tempModel.id) {
     } else {
       this.databaseService.addPerson(tempModel).subscribe(
-        (resp) => {
+        resp => {
           this.openSnackbar("Successfully added to mongoDB");
         },
         error => {
           this.openSnackbar("Failed to add person");
           console.error(error);
-        });
+        }
+      );
     }
     // window.alert("Person would be added to the DB when connected");
     this.openSnackbar("Added Person");

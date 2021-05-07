@@ -1,31 +1,37 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { environment } from './../environments/environment';
-import { IPerson } from './person/person';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { environment } from "./../environments/environment";
+import { IPerson } from "./person/person";
 // Maybe not need
 import stringifyObject from "stringify-object";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class DatabaseServiceService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   login(username: string, password: string) {
     console.log(username);
     console.log(password);
-    let body = new URLSearchParams();
-    body.set('username', username);
-    body.set('password', password);
-    let body2 = `username=${username}&password=${password}`;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    return this.http.post(environment.databaseBaseUrl + "login", body2, {headers: headers, withCredentials: true, observe: 'response' as 'response'});
+    const body = `username=${username}&password=${password}`;
+    const headers = new HttpHeaders({
+      "Content-Type": "application/x-www-form-urlencoded"
+    });
+    return this.http.post(environment.databaseBaseUrl + "login", body, {
+      headers,
+      withCredentials: true,
+      observe: "response" as "response"
+    });
   }
 
   addPerson(body: IPerson) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post(environment.databaseBaseUrl + "database", JSON.stringify(body), {headers: headers, withCredentials: true, observe: 'response' as 'response'});
+    const headers = new HttpHeaders({ "Content-Type": "application/json" });
+    return this.http.post(environment.databaseBaseUrl + "database", JSON.stringify(body), {
+      headers,
+      withCredentials: true,
+      observe: "response" as "response"
+    });
   }
 
   // Not sure if need for serializing data

@@ -12,23 +12,24 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
   checkoutForm = this.formBuilder.group({
-    username: '',
-    password: ''
-  })
-  constructor(private router: Router,
-    private formBuilder: FormBuilder,
-    private databaseService: DatabaseServiceService) { }
+    username: "",
+    password: ""
+  });
+  constructor(private router: Router, private formBuilder: FormBuilder, private databaseService: DatabaseServiceService) {}
 
   ngOnInit(): void {}
 
   authenticate(): void {
-    this.databaseService.login(this.checkoutForm.value.username, this.checkoutForm.value.password).subscribe(message => {
-      console.log("message login")
-      console.log(message.headers.keys());
-      this.router.navigateByUrl("/add-person");
-    }, err => {
-      console.log("error login")
-      console.log(err)
-    });
+    this.databaseService.login(this.checkoutForm.value.username, this.checkoutForm.value.password).subscribe(
+      message => {
+        console.log("message login");
+        console.log(message.headers.keys());
+        this.router.navigateByUrl("/add-person");
+      },
+      err => {
+        console.log("error login");
+        console.log(err);
+      }
+    );
   }
 }
