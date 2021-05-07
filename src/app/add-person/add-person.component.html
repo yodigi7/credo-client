@@ -1,7 +1,7 @@
 <div>
   <h1>Add Person</h1>
   <form (ngSubmit)="onSubmit()">
-    ID: {{ model._id }}
+    ID: {{ model.id }}
     <div class="nameFormat">
       <mat-form-field>
         <mat-label>Prefix</mat-label>
@@ -37,16 +37,16 @@
       </mat-form-field>
     </div>
     <mat-form-field>
-      <input matInput type="text" placeholder="Street" type="text" [(ngModel)]="model.street" name="street" />
+      <input matInput type="text" placeholder="Street" type="text" [(ngModel)]="model.address.streetAddress" name="street" />
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="City" [(ngModel)]="model.city" name="city" />
+      <input matInput type="text" placeholder="City" [(ngModel)]="model.address.city" name="city" />
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="State" [(ngModel)]="model.state" name="state" />
+      <input matInput type="text" placeholder="State" [(ngModel)]="model.address.state" name="state" />
     </mat-form-field>
     <mat-form-field>
-      <input matInput type="text" placeholder="Zip Code" [(ngModel)]="model.zipcode" name="zipcode" />
+      <input matInput type="text" placeholder="Zip Code" [(ngModel)]="model.address.zipcode" name="zipcode" />
     </mat-form-field>
     <mat-form-field>
       <mat-label>Membership Level</mat-label>

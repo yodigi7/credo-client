@@ -20,18 +20,29 @@ export interface IEvent {
   date?: Date | string;
 }
 
+export interface IAddress {
+  id?: string;
+  streetAddress?: string;
+  city?: string;
+  state?: string;
+  zipcode?: string;
+}
+
+export interface IParish {
+  id?: string;
+  name?: string;
+}
+
 export interface IPerson {
-  _id?: string;
+  id?: string;
   prefix?: string;
   firstName?: string;
   preferredName?: string;
   middleName?: string;
   lastName?: string;
   suffix?: string;
-  street?: string;
-  city?: string;
-  state?: string;
-  zipcode?: string;
+  address?: IAddress;
+  parish?: IParish;
   emails?: Array<IEmail>;
   phones?: Array<IPhone>;
   membershipLevel?: string;
@@ -42,17 +53,15 @@ export interface IPerson {
 }
 
 export class Person {
-  _id: string;
+  id: string;
   prefix: string;
   firstName: string;
   preferredName: string;
   middleName: string;
   lastName: string;
   suffix: string;
-  street: string;
-  city: string;
-  state: string;
-  zipcode: string;
+  address: IAddress;
+  parish: IParish;
   emails: Array<IEmail>;
   phones: Array<IPhone>;
   membershipLevel: string;
@@ -69,17 +78,15 @@ export class Person {
 
   static fromData(personInp: IPerson): Person {
     const person = new Person();
-    person._id = personInp._id;
+    person.id = personInp.id;
     person.prefix = personInp.prefix;
     person.firstName = personInp.firstName;
     person.preferredName = personInp.preferredName;
     person.middleName = personInp.middleName;
     person.lastName = personInp.lastName;
     person.suffix = personInp.suffix;
-    person.street = personInp.street;
-    person.city = personInp.city;
-    person.state = personInp.state;
-    person.zipcode = personInp.zipcode;
+    person.address = personInp.address ? JSON.parse(JSON.stringify(personInp.address)) : {};
+    person.parish = personInp.parish ? JSON.parse(JSON.stringify(personInp.parish)) : {};
     person.emails = personInp.emails ? JSON.parse(JSON.stringify(personInp.emails)) : [];
     person.phones = personInp.phones ? JSON.parse(JSON.stringify(personInp.phones)) : [];
     person.membershipLevel = personInp.membershipLevel;
