@@ -13,10 +13,16 @@ describe("LoginComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      providers: [{
-        provide: Router,
-        useClass: class { navigate = jasmine.createSpy("navigate"); }
-      }, FormBuilder, DatabaseServiceService],
+      providers: [
+        {
+          provide: Router,
+          useClass: class {
+            navigate = jasmine.createSpy("navigate");
+          }
+        },
+        FormBuilder,
+        DatabaseServiceService
+      ]
     }).compileComponents();
   }));
 
@@ -27,7 +33,7 @@ describe("LoginComponent", () => {
   });
 
   // it("should create", () => {
-    // TODO: maybe fix in the future
-    // expect(component).toBeTruthy();
+  // TODO: maybe fix in the future
+  // expect(component).toBeTruthy();
   // });
 });

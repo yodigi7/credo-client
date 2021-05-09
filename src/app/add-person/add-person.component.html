@@ -100,47 +100,48 @@
     <button mat-raised-button color="primary" type="button" (click)="addEmail()">
       Add +
     </button>
-    <div *ngIf="model.donations.length">
-      <h3>Donations</h3>
-      <div *ngFor="let donation of model.donations">
-        Amount: {{ donation.amount }} Date: {{ donation.date }}
-        <button mat-raised-button type="button" color="primary" (click)="removeDonation(donation)">
+    <div *ngIf="model.payments.length">
+      <h3>payments</h3>
+      <div *ngFor="let payment of model.payments">
+        Amount: {{ payment.amount }} Date: {{ payment.date }}
+        <button mat-raised-button type="button" color="primary" (click)="removepayment(payment)">
           Remove
         </button>
       </div>
     </div>
     <div class="threeWide">
       <mat-form-field>
-        <input matInput type="text" placeholder="Donation Amount" [(ngModel)]="donationModel.amount" name="donationAmount" />
+        <input matInput type="text" placeholder="Payment Amount" [(ngModel)]="paymentModel.amount" name="paymentAmount" />
       </mat-form-field>
       <mat-form-field>
         <input
           matInput
-          [matDatepicker]="donationDatePicker"
-          placeholder="Donation Date"
-          [(ngModel)]="donationModel.date"
-          name="donationDate"
+          [matDatepicker]="paymentDatePicker"
+          placeholder="Payment Date"
+          [(ngModel)]="paymentModel.date"
+          name="paymentDate"
         />
-        <mat-datepicker-toggle matSuffix [for]="donationDatePicker"></mat-datepicker-toggle>
-        <mat-datepicker #donationDatePicker></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="paymentDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #paymentDatePicker></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <textarea
           matInput
           type="text"
-          placeholder="Donation Notes"
-          [(ngModel)]="donationModel.notes"
-          name="donationNotes"
+          placeholder="Payment Notes"
+          [(ngModel)]="paymentModel.notes"
+          name="paymentNotes"
         ></textarea>
       </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" type="button" (click)="addDonation()">
+    <button mat-raised-button color="primary" type="button" (click)="addpayment()">
       Add +
     </button>
     <div *ngIf="model.events.length">
       <h3>Events</h3>
       <div *ngFor="let event of model.events">
-        Event: {{ event.name }} Date: {{ event.date }} Amount: {{ event.amount }}
+        Event: {{ event.name }} Date: {{ event.date }} Amount:
+        {{ event.amount }}
         <button mat-raised-button color="primary" type="button" (click)="removeEvent(event)">
           Remove
         </button>
@@ -172,7 +173,11 @@
       <textarea matInput type="text" placeholder="General Notes" [(ngModel)]="model.notes" name="notes"></textarea>
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit">Submit</button>
-    <button mat-raised-button color="primary" type="button" (click)="search()">Search</button>
-    <button mat-raised-button color="primary" type="button" (click)="resetPage()">Clear</button>
+    <button mat-raised-button color="primary" type="button" (click)="search()">
+      Search
+    </button>
+    <button mat-raised-button color="primary" type="button" (click)="resetPage()">
+      Clear
+    </button>
   </form>
 </div>
