@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { IPhone, IEmail, Person, IDonation, IEvent, IPerson } from "../person/person";
+import { IPhone, IEmail, Person, IPayment, IEvent, IPerson } from "../person/person";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { Subscription } from "rxjs";
 import { DatabaseServiceService } from "../database-service.service";
@@ -13,7 +13,7 @@ export class AddPersonComponent implements OnInit {
   model = new Person();
   phoneModel: IPhone = {};
   emailModel: IEmail = {};
-  donationModel: IDonation = {};
+  paymentModel: IPayment = {};
   eventModel: IEvent = {};
   submitted = false;
   searchObservable: Subscription;
@@ -60,8 +60,8 @@ export class AddPersonComponent implements OnInit {
     this.model.phones.splice(this.model.phones.indexOf(phone), 1);
   }
 
-  removeDonation(donation: IDonation): void {
-    this.model.donations.splice(this.model.donations.indexOf(donation), 1);
+  removepayment(payment: IPayment): void {
+    this.model.payments.splice(this.model.payments.indexOf(payment), 1);
   }
 
   removeEvent(event: IEvent): void {
@@ -82,10 +82,10 @@ export class AddPersonComponent implements OnInit {
     }
   }
 
-  addDonation(): void {
-    if (this.isEmptyDonation(this.donationModel)) {
-      this.model.donations.push(this.donationModel);
-      this.donationModel = {};
+  addpayment(): void {
+    if (this.isEmptypayment(this.paymentModel)) {
+      this.model.payments.push(this.paymentModel);
+      this.paymentModel = {};
     }
   }
 
@@ -104,8 +104,8 @@ export class AddPersonComponent implements OnInit {
     return !(emailModel.email || emailModel.type);
   }
 
-  isEmptyDonation(donationModel: IDonation) {
-    return !(donationModel.amount || donationModel.date || donationModel.notes);
+  isEmptypayment(paymentModel: IPayment) {
+    return !(paymentModel.amount || paymentModel.date || paymentModel.notes);
   }
 
   isEmptyEvent(eventModel: IEvent) {
@@ -121,9 +121,9 @@ export class AddPersonComponent implements OnInit {
       model.emails.push(this.emailModel);
       this.emailModel = {};
     }
-    if (!this.isEmptyDonation(this.donationModel)) {
-      model.donations.push(this.donationModel);
-      this.donationModel = {};
+    if (!this.isEmptypayment(this.paymentModel)) {
+      model.payments.push(this.paymentModel);
+      this.paymentModel = {};
     }
     if (!this.isEmptyEvent(this.eventModel)) {
       model.events.push(this.eventModel);
@@ -138,8 +138,8 @@ export class AddPersonComponent implements OnInit {
     if (model.emails.length === 0) {
       delete model.emails;
     }
-    if (model.donations.length === 0) {
-      delete model.donations;
+    if (model.payments.length === 0) {
+      delete model.payments;
     }
     if (model.events.length === 0) {
       delete model.events;
@@ -170,7 +170,7 @@ export class AddPersonComponent implements OnInit {
     this.model.parish = {};
     this.phoneModel = {};
     this.emailModel = {};
-    this.donationModel = {};
+    this.paymentModel = {};
     this.eventModel = {};
     this.submitted = false;
   }

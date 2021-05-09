@@ -43,10 +43,10 @@ export class DatabaseServiceService {
         return event;
       });
     }
-    if (queryData.donations) {
-      queryData.donations.map(donation => {
-        donation.date = donation.date.toString();
-        return donation;
+    if (queryData.payments) {
+      queryData.payments.map(payment => {
+        payment.date = payment.date.toString();
+        return payment;
       });
     }
     // Serialize Person

@@ -8,7 +8,7 @@ export interface IEmail {
   type?: string;
 }
 
-export interface IDonation {
+export interface IPayment {
   amount?: number;
   date?: Date | string;
   notes?: string;
@@ -47,7 +47,7 @@ export interface IPerson {
   phones?: Array<IPhone>;
   membershipLevel?: string;
   currentMember?: boolean;
-  donations?: Array<IDonation>;
+  payments?: Array<IPayment>;
   events?: Array<IEvent>;
   notes?: string;
 }
@@ -66,13 +66,13 @@ export class Person {
   phones: Array<IPhone>;
   membershipLevel: string;
   currentMember: boolean;
-  donations: Array<IDonation>;
+  payments: Array<IPayment>;
   events: Array<IEvent>;
   notes?: string;
   constructor() {
     this.emails = [];
     this.phones = [];
-    this.donations = [];
+    this.payments = [];
     this.events = [];
   }
 
@@ -91,7 +91,7 @@ export class Person {
     person.phones = personInp.phones ? JSON.parse(JSON.stringify(personInp.phones)) : [];
     person.membershipLevel = personInp.membershipLevel;
     person.currentMember = personInp.currentMember;
-    person.donations = personInp.donations ? JSON.parse(JSON.stringify(personInp.donations)) : [];
+    person.payments = personInp.payments ? JSON.parse(JSON.stringify(personInp.payments)) : [];
     person.events = personInp.events ? JSON.parse(JSON.stringify(personInp.events)) : [];
     person.notes = personInp.notes;
     return person;
