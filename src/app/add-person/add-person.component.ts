@@ -34,7 +34,7 @@ export class AddPersonComponent implements OnInit {
     } else {
       this.databaseService.addPerson(tempModel).subscribe(
         resp => {
-          this.openSnackbar("Successfully added to mongoDB");
+          this.openSnackbar("Successfully added to heroku database.");
         },
         error => {
           this.openSnackbar("Failed to add person");
