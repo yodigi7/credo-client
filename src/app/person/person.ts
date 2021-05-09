@@ -50,6 +50,11 @@ export interface IPerson {
   payments?: Array<IPayment>;
   events?: Array<IEvent>;
   notes?: string;
+  mailingLabel?: string;
+  nameTag?: string;
+  memberStartDate?: Date | string;
+  membershipExpirationDate?: Date | string;
+  organizationName?: string;
 }
 
 export class Person {
@@ -69,6 +74,11 @@ export class Person {
   payments: Array<IPayment>;
   events: Array<IEvent>;
   notes?: string;
+  mailingLabel?: string;
+  nameTag?: string;
+  memberStartDate?: Date | string;
+  membershipExpirationDate?: Date | string;
+  organizationName?: string;
   constructor() {
     this.emails = [];
     this.phones = [];
@@ -94,6 +104,11 @@ export class Person {
     person.payments = personInp.payments ? JSON.parse(JSON.stringify(personInp.payments)) : [];
     person.events = personInp.events ? JSON.parse(JSON.stringify(personInp.events)) : [];
     person.notes = personInp.notes;
+    person.mailingLabel = personInp.mailingLabel;
+    person.nameTag = personInp.nameTag;
+    person.memberStartDate = personInp.memberStartDate;
+    person.membershipExpirationDate = personInp.membershipExpirationDate;
+    person.organizationName = personInp.organizationName;
     return person;
   }
 }
