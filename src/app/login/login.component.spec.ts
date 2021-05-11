@@ -10,21 +10,23 @@ describe("LoginComponent", () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [LoginComponent],
-      providers: [
-        {
-          provide: Router,
-          useClass: class {
-            navigate = jasmine.createSpy("navigate");
-          }
-        },
-        FormBuilder,
-        DatabaseServiceService
-      ]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [LoginComponent],
+        providers: [
+          {
+            provide: Router,
+            useClass: class {
+              navigate = jasmine.createSpy("navigate");
+            }
+          },
+          FormBuilder,
+          DatabaseServiceService
+        ]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
