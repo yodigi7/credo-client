@@ -14,7 +14,7 @@ import { LoginComponent } from "./login/login.component";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HttpClientXsrfModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [AppComponent, AddPersonComponent, LoginComponent],
@@ -31,6 +31,7 @@ import { HttpClientModule } from "@angular/common/http";
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    HttpClientXsrfModule,
     HttpClientModule
   ],
   providers: [],
