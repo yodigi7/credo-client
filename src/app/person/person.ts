@@ -52,7 +52,7 @@ export interface IPerson {
   notes?: string;
   mailingLabel?: string;
   nameTag?: string;
-  memberStartDate?: Date | string;
+  membershipStartDate?: Date | string;
   membershipExpirationDate?: Date | string;
   organizationName?: string;
 }
@@ -76,7 +76,7 @@ export class Person {
   notes?: string;
   mailingLabel?: string;
   nameTag?: string;
-  memberStartDate?: Date | string;
+  membershipStartDate?: Date | string;
   membershipExpirationDate?: Date | string;
   organizationName?: string;
   constructor() {
@@ -106,7 +106,7 @@ export class Person {
     person.notes = personInp.notes;
     person.mailingLabel = personInp.mailingLabel;
     person.nameTag = personInp.nameTag;
-    person.memberStartDate = personInp.memberStartDate;
+    person.membershipStartDate = personInp.membershipStartDate;
     person.membershipExpirationDate = personInp.membershipExpirationDate;
     person.organizationName = personInp.organizationName;
     return person;

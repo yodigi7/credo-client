@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     this.databaseService.login(this.checkoutForm.value.username, this.checkoutForm.value.password).subscribe(
       message => {
         console.log("message login");
-        console.log(message.headers.keys());
         this.router.navigateByUrl("/add-person");
       },
       err => {
