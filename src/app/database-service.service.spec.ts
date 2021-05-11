@@ -1,4 +1,4 @@
-import { HttpClient, HttpClientModule, HttpHandler } from "@angular/common/http";
+import { HttpClient, HttpHandler } from "@angular/common/http";
 import { TestBed } from "@angular/core/testing";
 
 import { DatabaseServiceService } from "./database-service.service";
