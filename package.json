@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.3",
-    "@angular/cli": "^10.2.3",
+    "@angular/cli": "^11.2.12",
     "@angular/compiler-cli": "~10.2.5",
     "@angular/language-service": "~10.2.5",
     "@types/jasmine": "~3.3.8",
@@ -41,7 +41,6 @@
     "@typescript-eslint/eslint-plugin-tslint": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "angular-cli-ghpages": "^0.6.2",
-    "codelyzer": "^5.1.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-html": "^6.1.2",
