@@ -12,8 +12,6 @@ export class DatabaseServiceService {
   constructor(private http: HttpClient) {}
 
   login(username: string, password: string) {
-    console.log(username);
-    console.log(password);
     const body = `username=${username}&password=${password}`;
     const headers = new HttpHeaders({
       "Content-Type": "application/x-www-form-urlencoded"
