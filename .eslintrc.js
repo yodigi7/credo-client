@@ -24,7 +24,7 @@ module.exports = {
         "@typescript-eslint/tslint"
     ],
     "rules": {
-        "prettier/prettier": 1,
+        "prettier/prettier": 0,
         "@typescript-eslint/array-type": "off",
         "@typescript-eslint/consistent-type-definitions": "error",
         "@typescript-eslint/explicit-member-accessibility": [

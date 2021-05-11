@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "./../environments/environment";
 import { IPerson } from "./person/person";
 // Maybe not need
 import stringifyObject from "stringify-object";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -11,9 +12,7 @@ import stringifyObject from "stringify-object";
 export class DatabaseServiceService {
   constructor(private http: HttpClient) {}
 
-  login(username: string, password: string) {
-    console.log(username);
-    console.log(password);
+  login(username: string, password: string): Observable<HttpResponse<any>> {
     const body = `username=${username}&password=${password}`;
     const headers = new HttpHeaders({
       "Content-Type": "application/x-www-form-urlencoded"
@@ -25,7 +24,7 @@ export class DatabaseServiceService {
     });
   }
 
-  addPerson(body: IPerson) {
+  addPerson(body: IPerson): Observable<HttpResponse<any>> {
     const headers = new HttpHeaders({ "Content-Type": "application/json" });
     return this.http.post(environment.databaseBaseUrl + "database", JSON.stringify(body), {
       headers,
@@ -35,7 +34,7 @@ export class DatabaseServiceService {
   }
 
   // Not sure if need for serializing data
-  buildParameter(queryData: IPerson) {
+  buildParameter(queryData: IPerson): string {
     // Serialize dates
     if (queryData.events) {
       queryData.events.map(event => {
@@ -70,7 +69,6 @@ export class DatabaseServiceService {
     queryString = queryString.replace(/\"true\"/g, "true");
     queryString = queryString.replace(/\"false\"/g, "false");
     queryString = queryString.replace(/\'/g, '"');
-    console.log(queryString);
     return queryString;
   }
 }

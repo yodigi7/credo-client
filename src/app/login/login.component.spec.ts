@@ -1,5 +1,4 @@
-import { HttpClient } from "@angular/common/http";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { FormBuilder } from "@angular/forms";
 import { Router } from "@angular/router";
 import { DatabaseServiceService } from "../database-service.service";
@@ -7,24 +6,25 @@ import { DatabaseServiceService } from "../database-service.service";
 import { LoginComponent } from "./login.component";
 
 describe("LoginComponent", () => {
-  let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [LoginComponent],
-      providers: [
-        {
-          provide: Router,
-          useClass: class {
-            navigate = jasmine.createSpy("navigate");
-          }
-        },
-        FormBuilder,
-        DatabaseServiceService
-      ]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        declarations: [LoginComponent],
+        providers: [
+          {
+            provide: Router,
+            useClass: class {
+              navigate = jasmine.createSpy("navigate");
+            }
+          },
+          FormBuilder,
+          DatabaseServiceService
+        ]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);

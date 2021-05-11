@@ -33,7 +33,7 @@ export class AddPersonComponent implements OnInit {
     if (tempModel.id) {
     } else {
       this.databaseService.addPerson(tempModel).subscribe(
-        resp => {
+        () => {
           this.openSnackbar("Successfully added to heroku database.");
         },
         error => {
@@ -96,23 +96,23 @@ export class AddPersonComponent implements OnInit {
     }
   }
 
-  isEmptyPhone(phoneModel: IPhone) {
+  isEmptyPhone(phoneModel: IPhone): boolean {
     return !(phoneModel.phoneNumber || phoneModel.type);
   }
 
-  isEmptyEmail(emailModel: IEmail) {
+  isEmptyEmail(emailModel: IEmail): boolean {
     return !(emailModel.email || emailModel.type);
   }
 
-  isEmptypayment(paymentModel: IPayment) {
+  isEmptypayment(paymentModel: IPayment): boolean {
     return !(paymentModel.amount || paymentModel.date || paymentModel.notes);
   }
 
-  isEmptyEvent(eventModel: IEvent) {
+  isEmptyEvent(eventModel: IEvent): boolean {
     return !(eventModel.amount || eventModel.date || eventModel.name);
   }
 
-  addModelsToPerson(model: IPerson) {
+  addModelsToPerson(model: IPerson): void {
     if (!this.isEmptyPhone(this.phoneModel)) {
       model.phones.push(this.phoneModel);
       this.phoneModel = {};
@@ -131,7 +131,7 @@ export class AddPersonComponent implements OnInit {
     }
   }
 
-  cleanModel(model: IPerson) {
+  cleanModel(model: IPerson): void {
     if (model.phones.length === 0) {
       delete model.phones;
     }
