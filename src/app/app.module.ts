@@ -35,9 +35,7 @@ import { HttpCsrfInterceptor } from "./interceptors/http-csrf-interceptor";
     HttpClientXsrfModule,
     HttpClientModule
   ],
-  providers: [
-    HttpCsrfInterceptor
-  ],
+  providers: [HttpCsrfInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
