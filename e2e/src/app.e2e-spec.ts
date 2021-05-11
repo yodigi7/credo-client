@@ -10,7 +10,6 @@ describe("workspace-project App", () => {
 
   it("should display welcome message", () => {
     page.navigateTo();
-    // console.log(page.getTitleText());
   });
 
   afterEach(async () => {

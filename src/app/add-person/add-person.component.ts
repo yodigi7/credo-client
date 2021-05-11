@@ -151,16 +151,6 @@ export class AddPersonComponent implements OnInit {
     const tempModel = Person.fromData(this.model);
     this.addModelsToPerson(tempModel);
     this.cleanModel(tempModel);
-    // Replace with new getPersons
-    // this.searchObservable = this.graphqlService.getPersons(tempModel).subscribe(resp => {
-    //   this.searchObservable.unsubscribe();
-    //   if (resp.length === 0) {
-    //     this.openSnackbar("Failed to find anyone");
-    //   } else {
-    //     this.model = Person.fromData(resp[0]);
-    //     console.log(this.model);
-    //   }
-    // });
   }
 
   resetPage(): void {
