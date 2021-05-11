@@ -6,8 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test --watch=false",
-    "lint-fix": "eslint src/**/*.{ts,js,html} e2e/**/*.ts --fix && prettier src/**/* e2e/**/* --print-width=130 --write",
-    "lint": "eslint src/**/*.html src/**/*.ts && prettier src/**/* --print-width=130 --check",
+    "lint-fix": ".\\node_modules\\.bin\\eslint src/**/*.{ts,js,html} e2e/**/*.ts --fix && prettier src/**/* e2e/**/* --print-width=130 --write",
+    "lint": ".\\node_modules\\.bin\\eslint src/**/*.html src/**/*.ts && prettier src/**/* --print-width=130 --check",
     "deploy": "ng build --base-href=/credo-client/ && ngh",
     "postinstall": "ngcc",
     "e2e": "ng e2e"
