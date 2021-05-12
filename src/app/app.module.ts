@@ -15,7 +15,6 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { HttpClientModule, HttpClientXsrfModule } from "@angular/common/http";
-import { HttpCsrfInterceptor } from "./interceptors/http-csrf-interceptor";
 
 @NgModule({
   declarations: [AppComponent, AddPersonComponent, LoginComponent],
@@ -35,7 +34,7 @@ import { HttpCsrfInterceptor } from "./interceptors/http-csrf-interceptor";
     HttpClientXsrfModule,
     HttpClientModule
   ],
-  providers: [HttpCsrfInterceptor],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
